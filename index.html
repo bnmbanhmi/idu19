@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Của Chúng Ta ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Thư viện cho Vòng quay may mắn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/TextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zarocknz/javascript-winwheel@master/Winwheel.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FFF8F0; /* Màu nền ấm áp */
+            color: #4A2E2A;
+            overflow: hidden; /* Ẩn thanh cuộn chính */
+        }
+        .font-dancing {
+            font-family: 'Dancing Script', cursive;
+        }
+        .section {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            overflow-y: auto; /* Cho phép cuộn trong từng section */
+            padding: 1rem;
+        }
+        .section.active {
+            display: flex;
+            opacity: 1;
+        }
+        /* Custom button style */
+        .btn-love {
+            background-image: linear-gradient(to right, #FF8989, #FFC7C7);
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 999px;
+            box-shadow: 0 4px 15px rgba(255, 137, 137, 0.5);
+            transition: all 0.3s ease;
+        }
+        .btn-love:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 137, 137, 0.7);
+        }
+        /* Style cho timeline */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background-color: #FFC7C7;
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 60px;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 60px;
+            text-align: left;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 25px;
+            height: 25px;
+            background-color: #FFF8F0;
+            border: 4px solid #FF8989;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item:nth-child(odd)::after {
+            right: -12.5px;
+        }
+        .timeline-item:nth-child(even)::after {
+            left: -12.5px;
+        }
+
+        /* Style cho thẻ cào */
+        #scratch-card-container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            cursor: grabbing;
+        }
+        #scratch-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        #hidden-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+
+    <!-- Section 1: Welcome -->
+    <section id="welcome" class="section active flex-col items-center justify-center text-center bg-cover bg-center" style="background-image: url('images/VideoCapture_20241101-095405.jpg');">
+        <div class="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg">
+            <h1 class="font-dancing text-5xl md:text-7xl text-pink-500">Dành tặng ngừi anh iuuuu</h1>
+            <p class="mt-4 text-lg md:text-xl">Chúc mừng sinh nhật em bé 19 tuổi nháaaa</p>
+            <p class="mt-4 text-lg md:text-xl">Và kỷ niệm 1 năm chúng mình nhìn thấy nhaooo</p>
+            <p class="mt-2 text-md md:text-lg">Anh có món quà nho nhỏ này. Em sẵn sàng khám phá chứ?</p>
+            <button onclick="showSection('timeline')" class="btn-love mt-8">Bắt Đầu Hành Trình</button>
+        </div>
+    </section>
+
+    <!-- Section 2: Timeline -->
+    <section id="timeline" class="section flex-col items-center justify-start">
+        <div class="w-full max-w-4xl mx-auto p-4 md:p-10">
+            <h2 class="font-dancing text-4xl md:text-6xl text-center mb-12">Dòng Thời Gian Ký Ức</h2>
+            <div class="timeline-container relative">
+                <!-- THAY THẾ CÁC MỤC DƯỚI ĐÂY BẰNG KỶ NIỆM CỦA BẠN -->
+                <div class="timeline-item">
+                    <img src="https://placehold.co/300x300/FFC7C7/4A2E2A?text=Hog+có+ảnh" alt="Kỷ niệm 1" class="rounded-lg shadow-md inline-block">
+                    <div class="mt-2">
+                        <h3 class="font-bold text-lg">Ngày 30/09/2024</h3>
+                        <p>Ngày anh nhận ra hình bóng anh hằng mơ là có thật. Em mặc một chiếc váy màu... đen, tất nhiên ùi. Và đây là khởi đầu cho một hành trình gian khổ (nhưng vui)...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                     <img src="https://placehold.co/300x300/FFC7C7/4A2E2A?text=Cũng+hog+có+ảnh,++tiếc+ghê..." alt="Kỷ niệm 2" class="rounded-lg shadow-md inline-block">
+                    <div class="mt-2">
+                        <h3 class="font-bold text-lg">Ngày 06/10/2024</h3>
+                        <p>First date, chúng mình đi Vụ Xuân, anh vẫn nhớ được em bé làm tiramisu cho ăn, hẹ hẹ hẹ. Anh bắt đầu những ngày tháng giảng về AI cho em bé nghe... Xong được cùng nhau trải nghiệm 1 chuyến lạc đường vòng quanh Hà Nội...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                     <img src="images/Screenshot 2024-11-09 at 01.18.23.jpg" alt="Kỷ niệm 3" class="rounded-lg shadow-md inline-block">
+                    <div class="mt-2">
+                        <h3 class="font-bold text-lg">Ngày 29/01/2025</h3>
+                        <p>Một đêm mà 2 đứa hâm nói chuyện với nhau đến tận 7h sáng...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                     <img src="images/IMG_1737970864112_1738088204660.jpg" alt="Kỷ niệm 4" class="rounded-lg shadow-md inline-block">
+                    <div class="mt-2">
+                        <h3 class="font-bold text-lg">Ngày 29/01/2025</h3>
+                        <p>Một ngày đẹp trời, anh đến chơi với em bé cụa anhhhh</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                     <img src="images/IMG_20250413_102931.jpg" alt="Kỷ niệm 5" class="rounded-lg shadow-md inline-block">
+                    <div class="mt-2">
+                        <h3 class="font-bold text-lg">Ngày 13/04/2025</h3>
+                        <p>Sau thành công đầu tiên cùng nhau, chắc chắn sẽ là khởi đầu cho rất nhiều thành công nữa</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                     <img src="images/IMG_1749653374608_1749653662193.jpg" alt="Kỷ niệm 6" class="rounded-lg shadow-md inline-block">
+                    <div class="mt-2">
+                        <h3 class="font-bold text-lg">Ngày 11/06/2025</h3>
+                        <p>Trước thành công tiếp theo cùng nhau, bảo rồi mà, sẽ còn nhiều nữa, cứ đợi đóooo</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                     <img src="images/IMG_1756557520312_1756557542102.jpg" alt="Kỷ niệm 6" class="rounded-lg shadow-md inline-block">
+                    <div class="mt-2">
+                        <h3 class="font-bold text-lg">Ngày 30/08/2025</h3>
+                        <p>Chả dịp gì nhưng thích thì cho vào</p>
+                    </div>
+                </div>
+                <!-- KẾT THÚC PHẦN THAY THẾ -->
+            </div>
+             <div class="text-center mt-12">
+                <button onclick="showSection('stats')" class="btn-love">Khám phá điều thú vị về tụi mình</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Stats & Quiz -->
+    <section id="stats" class="section flex-col items-center justify-center text-center">
+        <div class="w-full max-w-4xl mx-auto">
+            <h2 class="font-dancing text-4xl md:text-6xl mb-8">Những Con Số Không Biết Nói Gì</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-12 text-center">
+                <!-- THAY THẾ CÁC CON SỐ -->
+                <div class="bg-white/60 p-4 rounded-xl shadow-md">
+                    <div class="text-4xl">☕</div>
+                    <p class="text-3xl font-bold">9</p>
+                    <p>Lần tới quán 2 quán cafe yêu thích nhất, đố bic là quán nào</p>
+                </div>
+                <div class="bg-white/60 p-4 rounded-xl shadow-md">
+                    <div class="text-4xl">🍜</div>
+                    <p class="text-3xl font-bold">100</p>
+                    <p>Buổi đi ăn ngon</p>
+                </div>
+                <div class="bg-white/60 p-4 rounded-xl shadow-md">
+                    <div class="text-4xl">✈️</div>
+                    <p class="text-3xl font-bold">999</p>
+                    <p>Số lần em bé chỉ đường sai</p>
+                </div>
+                <div class="bg-white/60 p-4 rounded-xl shadow-md">
+                    <div class="text-4xl">🎬</div>
+                    <p class="text-3xl font-bold">2</p>
+                    <p>Bộ phim xem cùng nhau</p>
+                </div>
+                <div class="bg-white/60 p-4 rounded-xl shadow-md">
+                    <div class="text-4xl">🎬</div>
+                    <p class="text-3xl font-bold">∞</p>
+                    <p>Tình yêu anh dành cho em</p>
+                </div>
+            </div>
+            
+            <div id="quiz-container" class="bg-white/80 p-6 rounded-2xl shadow-lg">
+                <!-- Các câu hỏi sẽ được load vào đây bằng JS -->
+            </div>
+        </div>
+    </section>
+
+     <!-- Section 4: Scratch Card -->
+    <section id="scratch" class="section flex-col items-center justify-center text-center">
+        <h2 class="font-dancing text-4xl md:text-6xl mb-4">Anh có một món quà bí mật...</h2>
+        <p class="mb-8">Cào để nhận một bức ảnh cô bé xinh đẹp nhất thế giới nhé!</p>
+        <div id="scratch-card-container" class="rounded-2xl shadow-2xl">
+            <!-- THAY ẢNH "DÌM" CỦA IDU VÀO ĐÂY -->
+            <img id="hidden-image" src="images/IMG_20250415_161417.jpg" alt="Hidden treasure">
+            <canvas id="scratch-canvas" width="400" height="300"></canvas>
+        </div>
+        <button id="scratch-next-btn" onclick="showSection('wheel')" class="btn-love mt-8 opacity-0 transition-opacity duration-500">Và đây mới là món quà thật sự!</button>
+    </section>
+    
+    <!-- Section 5: Wheel of Fortune -->
+    <section id="wheel" class="section flex-col items-center justify-center text-center">
+        <h2 class="font-dancing text-4xl md:text-6xl mb-4">Vòng Quay Coupon Tình Yêu</h2>
+        <p class="mb-8">Quay để xem cuộc hẹn tiếp theo của chúng mình là gì nhé!</p>
+        <div class="relative w-80 h-80 md:w-96 md:h-96 flex items-center justify-center">
+            <canvas id="coupon-wheel" width="500" height="500"></canvas>
+            <div class="absolute w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-inner cursor-pointer" onclick="startSpin()">
+                <span class="font-bold text-pink-500">QUAY</span>
+            </div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 text-4xl">🔻</div>
+        </div>
+        <div id="wheel-result" class="mt-8 text-2xl font-bold h-10"></div>
+        <button id="wheel-next-btn" onclick="showSection('final')" class="btn-love mt-4 opacity-0 transition-opacity duration-500">Xem lời nhắn cuối cùng</button>
+    </section>
+
+    <!-- Section 6: Final Message -->
+    <section id="final" class="section flex-col items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/FFF8F0/4A2E2A?text=Anh+Lang+Man+Nhat');">
+        <div class="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg max-w-2xl">
+            <h1 class="font-dancing text-5xl md:text-7xl text-pink-500">Yêu Em!</h1>
+            <!-- THAY LỜI NHẮN CỦA BẠN VÀO ĐÂY -->
+            <p class="mt-4 text-lg md:text-xl">Cảm ơn em vì đã đến và làm cho một năm qua của anh trở nên thật ý nghĩa. Mong rằng chúng ta sẽ có thêm nhiều, nhiều năm kỷ niệm nữa. Yêu em rất nhiều!</p>
+            <p class="mt-8 text-xl font-semibold">- Chàng trai của em -</p>
+        </div>
+    </section>
+
+
+    <script>
+        // --- Navigation Logic ---
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            setTimeout(() => {
+                const newSection = document.getElementById(sectionId);
+                if (newSection) {
+                    newSection.classList.add('active');
+                    // Initialize section-specific logic
+                    if(sectionId === 'scratch') initScratchCard();
+                    // We no longer initialize the wheel here. It will be initialized on first spin.
+                    if(sectionId === 'stats') startQuiz();
+                }
+            }, 400); // Đợi 0.4s để hiệu ứng mờ cũ hoàn tất
+        }
+
+        // --- Quiz Logic ---
+        const quizData = [
+            {
+                question: "Ai là người đáng iu nhất thế giới?",
+                options: [
+                    { text: "Một chú cún con", image: "https://bizweb.dktcdn.net/100/327/092/files/1-223c55b9-fdc8-4444-b517-1252df9caef5.png?v=1678681925834" },
+                    { text: "idu", image: "images/IMG_20250427_231412.jpg", correct: true }
+                ]
+            },
+            {
+                question: "Ai là người xinh đẹp nhất thế gian?",
+                options: [
+                    { text: "Hoa hậu Thế giới", image: "https://photo.znews.vn/w660/Uploaded/bpivpjbp/2018_03_10/28959155_1366003913545138_9045654308850237440_o.jpg" },
+                    { text: "idu", image: "images/IMG_20250427_231412.jpg", correct: true }
+                ]
+            },
+            {
+                question: "Ai là người thông minh nhất quả đất?",
+                options: [
+                    { text: "bnm", image: "images/20250425_204619.jpg" },
+                    { text: "idu", image: "images/IMG_1749653374650_1749653664511.jpg", correct: true }
+                ]
+            },
+            {
+                question: "Ai là người anh yêu nhất trên đời?",
+                options: [
+                    { text: "idu buồn", image: "images/IMG_8075.jpg", correct: true },
+                    { text: "idu vui", image: "images/Messenger_creation_DF1E1146-1C28-443A-B849-DE474B914D52.jpeg", correct: true }
+                ]
+            }
+        ];
+        let currentQuestionIndex = 0;
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (currentQuestionIndex < quizData.length) {
+                const questionData = quizData[currentQuestionIndex];
+                let optionsHtml = questionData.options.map((opt, index) => `
+                    <button onclick="checkAnswer(${opt.correct || false}, this)" class="w-1/2 p-2 transform hover:scale-105 transition-transform">
+                        <img src="${opt.image}" alt="${opt.text}" class="rounded-lg shadow-md w-full object-cover aspect-square">
+                        <p class="mt-2 font-semibold">${opt.text}</p>
+                    </button>
+                `).join('');
+
+                quizContainer.innerHTML = `
+                    <h3 class="text-2xl font-semibold mb-4">${questionData.question}</h3>
+                    <div class="flex">${optionsHtml}</div>
+                `;
+            } else {
+                quizContainer.innerHTML = `
+                    <h3 class="text-2xl font-semibold mb-4">Uầy, trả lời đúng hết lun! Quá giỏi! Đúng là người vừa đáng iu vừa xinh đẹp vừa thông minh vừa anh iu nhất trên đời!</h3>
+                    <button onclick="showSection('scratch')" class="btn-love">Tiếp tục khám phá nào!</button>
+                `;
+            }
+        }
+        
+        function checkAnswer(isCorrect, element) {
+            const buttons = element.parentElement.querySelectorAll('button');
+            if (isCorrect) {
+                element.style.border = '4px solid #4ade80';
+                buttons.forEach(btn => btn.disabled = true);
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    displayQuestion();
+                }, 1000);
+            } else {
+                element.style.border = '4px solid #f87171';
+                gsap.fromTo(element, {x:-5}, {x:5, clearProps:"x", repeat:5, duration:0.08});
+                setTimeout(() => {
+                    element.style.border = 'none';
+                }, 1000);
+            }
+        }
+
+        // --- Scratch Card Logic ---
+        function initScratchCard() {
+            const canvas = document.getElementById('scratch-canvas');
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+            
+            ctx.fillStyle = '#C0C0C0'; // Màu bạc
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = 'destination-out';
+
+            function getMousePos(canvas, evt) {
+                const rect = canvas.getBoundingClientRect();
+                return {
+                    x: evt.clientX - rect.left,
+                    y: evt.clientY - rect.top
+                };
+            }
+
+            function scratch(x, y) {
+                ctx.beginPath();
+                ctx.arc(x, y, 20, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            let scratchedPixels = 0;
+            let totalPixels = canvas.width * canvas.height;
+
+            function checkScratchProgress() {
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                let transparentPixels = 0;
+                for (let i = 3; i < imageData.data.length; i += 4) {
+                    if (imageData.data[i] === 0) {
+                        transparentPixels++;
+                    }
+                }
+                const percentage = (transparentPixels / totalPixels) * 100;
+                if (percentage > 60) {
+                    document.getElementById('scratch-next-btn').style.opacity = '1';
+                }
+            }
+
+            canvas.addEventListener('mousedown', () => isDrawing = true);
+            canvas.addEventListener('mouseup', () => {
+                isDrawing = false;
+                checkScratchProgress();
+            });
+            canvas.addEventListener('mousemove', (e) => {
+                if (!isDrawing) return;
+                const pos = getMousePos(canvas, e);
+                scratch(pos.x, pos.y);
+            });
+            // For touch devices
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                isDrawing = true;
+            });
+            canvas.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                isDrawing = false;
+                checkScratchProgress();
+            });
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                if (!isDrawing) return;
+                const touch = e.touches[0];
+                const pos = getMousePos(canvas, touch);
+                scratch(pos.x, pos.y);
+            });
+        }
+        
+        // --- Wheel of Fortune Logic ---
+        let theWheel;
+
+        function initWheel() {
+             // A check to make sure the library has loaded
+            if (typeof Winwheel === 'undefined') {
+                console.error('Winwheel library not loaded.');
+                alert('Đã có lỗi xảy ra với vòng quay, vui lòng thử lại sau!');
+                return;
+            }
+
+             theWheel = new Winwheel({
+                'canvasId'     : 'coupon-wheel', // Critical: specify which canvas to use
+                'numSegments'  : 8,
+                'outerRadius'  : 240,
+                'textFontSize' : 16,
+                'textFontFamily' : 'Montserrat',
+                'segments'     :
+                [
+                   {'fillStyle' : '#FF8989', 'text' : 'Massage 30 phút'},
+                   {'fillStyle' : '#FFC7C7', 'text' : 'Đấm lưng xả stress'},
+                   {'fillStyle' : '#FFEADD', 'text' : 'Một bữa cơm anh nấu'},
+                   {'fillStyle' : '#FF8989', 'text' : 'Vé xem phim em chọn'},
+                   {'fillStyle' : '#FFC7C7', 'text' : 'Shopping'},
+                   {'fillStyle' : '#FF8989', 'text' : 'Trà sữa/Nước cam'},
+                   {'fillStyle' : '#FFC7C7', 'text' : 'Đi phố đi bộ'}
+                ],
+                'animation' :
+                {
+                    'type'     : 'spinToStop',
+                    'duration' : 8,
+                    'spins'    : 10,
+                    'callbackFinished' : alertPrize,
+                    'callbackSound'    : playSound,
+                    'soundTrigger'     : 'pin'
+                },
+                'pins' : {
+                    'number' : 16
+                }
+            });
+        }
+        
+        let audio = new Audio('https://cdn.jsdelivr.net/gh/crismc/winwheel_js/examples/media/tick.mp3');
+        function playSound() {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        function startSpin() {
+            // Initialize the wheel on the first spin attempt, if it hasn't been already.
+            if (!theWheel) {
+                initWheel();
+            }
+
+            // It might fail to initialize if the library is missing, so check again.
+            if (theWheel) {
+                theWheel.stopAnimation(false);
+                theWheel.rotationAngle = 0;
+                theWheel.startAnimation();
+                document.getElementById('wheel-result').innerText = "";
+            } else {
+                // Fallback if library fails to load
+                console.error('Winwheel library failed to initialize');
+                const prizes = [
+                    'Massage 30 phút',
+                    'Đấm lưng xả stress',
+                    'Một bữa cơm anh nấu',
+                    'Vé xem phim em chọn',
+                    'Shopping',
+                    'Trà sữa/Nước cam',
+                    'Đi phố đi bộ'
+                ];
+                const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+                setTimeout(() => {
+                    alertPrize({text: randomPrize});
+                }, 2000);
+            }
+        }
+        
+        function alertPrize(indicatedSegment) {
+            const resultDiv = document.getElementById('wheel-result');
+            resultDiv.innerText = `Chúc mừng! Em nhận được: "${indicatedSegment.text}"`;
+            document.getElementById('wheel-next-btn').style.opacity = '1';
+        }
+
+    </script>
+</body>
+</html>
+

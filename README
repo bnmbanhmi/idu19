@@ -6,3 +6,116 @@
 - một vài con số thống kê thú vị sau hành trình 1 năm
 - một bức ảnh bí mật cần được cào, nhưng thực ra lại là một bức ảnh nhìn rất ngố, kiểu gotcha
 - trang đầu tiên sẽ là một phần chào mừng độc đáo
+
+
+Chào bạn, ý tưởng của bạn rất tuyệt vời và chân thành! Việc sắp xếp chúng thành một "hành trình" trải nghiệm sẽ khiến món quà này càng thêm ý nghĩa. Dưới đây là một bản thiết kế chi tiết, sắp xếp các ý tưởng của bạn thành một luồng câu chuyện liền mạch.
+
+Bạn có thể tạo một trang web duy nhất (single-page application) để trải nghiệm không bị ngắt quãng, mỗi phần sẽ hiện ra khi người dùng nhấn "Tiếp tục".
+
+---
+
+### **Bản Thiết Kế Website "Hành Trình Của Chúng Ta"**
+
+**Mục tiêu:** Tạo ra một trải nghiệm web cá nhân, lãng mạn và vui vẻ, dẫn dắt idu qua một câu chuyện tình yêu của hai bạn.
+
+---
+
+### **Trang 1: Bức Thiệp Mời Kỹ Thuật Số**
+
+* **Concept:** Màn hình chờ đầu tiên, giống như một bìa thiệp mời sang trọng.
+* **Giao diện:**
+    * Nền là một bức ảnh đẹp nhất của hai bạn, có thể làm mờ nhẹ để chữ nổi bật.
+    * Chính giữa là một khối văn bản được thiết kế như một tấm thiệp mời.
+    * **Tiêu đề:** `Dành tặng idu, cô gái 19 tuổi của anh!`
+    * **Nội dung:** "Chúc mừng sinh nhật và kỷ niệm 1 năm chúng mình gặp nhau! Anh đã tạo ra một 'bảo tàng online' nho nhỏ để lưu giữ lại hành trình tuyệt vời của chúng ta. Em sẵn sàng khám phá chứ?"
+* **Tương tác:** Một nút bấm duy nhất, nổi bật ở giữa: `[ Bắt Đầu Hành Trình ]`
+
+---
+
+### **Trang 2: Dòng Thời Gian Ký Ức**
+
+* **Concept:** Sau khi bấm nút, màn hình sẽ cuộn xuống hoặc chuyển cảnh mượt mà đến phần "Timeline". Đây là lúc nhìn lại quá khứ.
+* **Giao diện:**
+    * Một đường kẻ dọc chạy giữa màn hình.
+    * Các cột mốc thời gian (lần đầu gặp, buổi hẹn đầu tiên, chuyến đi chơi xa...) sẽ nằm trên đường kẻ đó.
+    * Với mỗi cột mốc, một bức ảnh tương ứng sẽ hiện ra ở bên trái hoặc phải của đường kẻ.
+    * Khi người dùng lướt tới ảnh nào, một dòng bình luận ngắn gọn, ngọt ngào của bạn sẽ hiện ra bên cạnh ảnh đó.
+    * **Ví dụ:**
+        * *Ảnh lần đầu gặp:* "Ngày xx/yy/zzzz: Ngày anh nhận ra 'crush' là có thật."
+        * *Ảnh đi ăn:* "Ngày aa/bb/cccc: Buổi đi ăn đầu tiên, em ăn nhiều hơn anh nghĩ :D"
+* **Tương tác:**
+    * Hiệu ứng ảnh và chữ xuất hiện mượt mà khi người dùng cuộn chuột.
+    * Cuối timeline, có một nút: `[ Khám Phá Những Điều Thú Vị Về Tụi Mình ]`
+
+---
+
+### **Trang 3: Góc Thống Kê Vui Vẻ & Thử Thách Nhỏ**
+
+* **Concept:** Một khu vực tương tác vui nhộn để idu khám phá và trả lời câu hỏi về chính mình.
+* **Giao diện:** Chia làm 2 phần nhỏ.
+
+    * **Phần 1: Những Con Số Biết Nói**
+        * Sử dụng các icon và con số lớn, bắt mắt để trình bày.
+        * **Ví dụ:**
+            * (Icon ly cafe) **Quán cà phê 'ruột':** ABC Coffee, `15` lần.
+            * (Icon bát phở) **Số buổi đi ăn:** `98` buổi (và chưa có dấu hiệu dừng lại).
+            * (Icon máy bay) **Chuyến đi đáng nhớ:** `3` chuyến.
+            * (Icon phim) **Bộ phim xem cùng nhau:** `25` bộ.
+
+    * **Phần 2: Trắc Nghiệm Tình Yêu (Chỉ có một đáp án đúng!)**
+        * Một loạt câu hỏi hiện ra lần lượt.
+        * **Câu 1: Ai là người CUTE nhất thế giới?**
+            * *Lựa chọn A:* (Ảnh một chú cún con mắt long lanh)
+            * *Lựa chọn B:* (Ảnh "dìm" lúc tã nhất nhưng cute của idu)
+            * *Logic:* Chọn A -> Báo sai, yêu cầu chọn lại. Chọn B -> Hiện ra thông báo "Chính xác! Không ai bằng em hết" và chuyển sang câu tiếp theo.
+        * **Các câu hỏi tương tự:**
+            * Ai là người xinh đẹp nhất thế gian? (Option A: Hoa hậu XYZ / Option B: idu)
+            * Ai là người anh yêu nhất? (Option A: Mẹ anh / Option B: idu) -> *Câu này có thể để 2 đáp án đều đúng kèm lời giải thích hài hước!*
+            * Ai là người giỏi nhất vũ trụ? (Option A: Albert Einstein / Option B: idu)
+
+* **Tương tác:** Sau khi trả lời xong câu hỏi cuối, một nút sẽ hiện ra: `[ Anh Có Một Món Quà Bí Mật... ]`
+
+---
+
+### **Trang 4: Tấm Thiệp Cào "Gotcha!"**
+
+* **Concept:** Tạo sự tò mò với một món quà bí mật, nhưng kết quả lại là một trò đùa đáng yêu.
+* **Giao diện:**
+    * Một khu vực trông giống hệt như một tấm thẻ cào trúng thưởng, có lớp phủ màu bạc.
+    * **Dòng chữ bên trên:** "Hãy cào để nhận một bức ảnh 'nàng thơ' xinh đẹp nhất của anh!"
+* **Tương tác:**
+    * idu có thể dùng chuột (hoặc ngón tay trên điện thoại) để "cào" lớp phủ bạc.
+    * Bên dưới lớp phủ là một bức ảnh thật ngố, hài hước của chính cô ấy. Kèm theo dòng chữ "GOTCHA! Nhưng trong mắt anh em lúc nào cũng xinh <3".
+* **Nút bấm bên dưới:** `[ Và Đây Mới Là Món Quà Thật Sự! ]`
+
+---
+
+### **Trang 5: Vòng Quay May Mắn Tình Yêu**
+
+* **Concept:** Đây là phần quà chính, một lời hứa hẹn về những buổi hẹn hò trong tương lai do chính bạn phục vụ.
+* **Giao diện:**
+    * Một vòng quay rực rỡ, nhiều màu sắc.
+    * Các ô trên vòng quay là các "coupon dịch vụ":
+        * Massage chuyên nghiệp 30 phút
+        * Đấm lưng xả stress
+        * Một bữa tối do anh nấu
+        * Vé xem phim em chọn
+        * Một buổi shopping < 500k
+        * Rửa bát 1 tuần
+        * Thêm 1 ô "Chúc bạn may mắn lần sau" (để trêu thôi, thực ra quay vào sẽ được quay lại :D)
+    * **Dòng chữ:** "Tương lai của chúng ta có vô vàn điều thú vị. Hãy quay để xem cuộc hẹn tiếp theo của mình là gì nhé!"
+* **Tương tác:**
+    * Nút `[ QUAY NGAY! ]` ở giữa vòng quay.
+    * Khi quay xong, một pop-up (cửa sổ nhỏ) sẽ hiện ra thông báo "Chúc mừng em đã nhận được [tên coupon]! Coupon này có giá trị vô thời hạn, chỉ cần em muốn là có."
+
+---
+
+### **Trang 6: Lời Kết**
+
+* **Concept:** Một trang cuối cùng đơn giản để gửi lời nhắn chân thành nhất.
+* **Giao diện:**
+    * Một bức ảnh lãng mạn của hai bạn.
+    * Một đoạn văn bản ngắn do bạn tự viết, ví dụ: "Cảm ơn em vì đã đến và làm cho một năm qua của anh trở nên thật ý nghĩa. Mong rằng chúng ta sẽ có thêm nhiều, nhiều năm kỷ niệm nữa. Yêu em rất nhiều!"
+    * Ký tên: Chàng trai của em.
+
+Chúc bạn sẽ tạo ra một trang web thật ý nghĩa và bạn gái của bạn sẽ có một ngày sinh nhật thật hạnh phúc!
